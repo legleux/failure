@@ -20,7 +20,11 @@ jobs:
 
     steps:
 
-
       - name: Build
         run: |
-          if [[ $RANDOM -lt 30000 ]] ; then return 0; else return 1; fi;
+          # 50/50 shot
+          if [[ $RANDOM -lt $(echo "2^14" | bc) ]] ; then (exit 0); else (exit 1); fi;
+
+      - name: Test
+        if: always() && {{ runner.OS == "ubuntu" }}
+        run: echo "I are run"

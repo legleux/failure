@@ -25,5 +25,5 @@ jobs:
           if [[ $RANDOM -lt $(echo "2^14" | bc) ]] ; then (exit 0); else (exit 1); fi;
 
       - name: Test
-        if: always() && ${{ runner.OS == "ubuntu" }}
+        if: always() && ${{ matrix.runner }} == 'ubuntu'
         run: echo "I are run"

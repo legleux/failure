@@ -16,6 +16,7 @@ jobs:
 
   test:
     name: Test ${{ matrix.version}}
+    if: always()
     needs: build
     strategy:
       matrix:

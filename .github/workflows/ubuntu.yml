@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-${{ matrix.version}}
     steps:
       - name: just fail
-        if: ${{ matrix.compiler }} == 'clang'
+        if: ${{ matrix.compiler }} == clang
         run: echo ${{ matrix.compiler }}
 
       - uses: actions/checkout@v3

@@ -1,0 +1,14 @@
+name: Build
+description: 'composite run action'
+
+runs:
+  using: "composite"
+  steps:
+
+    - name: Build
+      shell: bash
+      run: |
+        set -x
+        echo I am building ${{ matrix.type}} with ${{ matrix.compiler}} on ${{ matrix.version }} > executable
+        ls -lh
+        .github/actions/ubuntu/build/build.sh

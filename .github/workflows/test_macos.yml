@@ -1,0 +1,16 @@
+name: Test
+
+on:
+  workflow_call:
+  workflow_run:
+    workflows: ["🏗 Build"]
+jobs:
+  macOS:
+    strategy:
+      matrix:
+        version: [macos-11, macos-12]
+    runs-on: ${{ matrix.version}}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          os-version: ${{ matrix.version }}

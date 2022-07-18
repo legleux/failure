@@ -1,0 +1,22 @@
+name: 🏗 Build
+
+on: workflow_call
+
+jobs:
+  deploy:
+    name: Build ${{ matrix.version}}-${{ matrix.compiler}}-${{ matrix.build_type}}
+    strategy:
+      matrix:
+        version: ['dpkg', 'rpm']
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: ${{ github.workflow }}
+
+      - uses: legleux/failure/.github/actions/deploy@main
+
+      - uses: actions/upload-artifact@master
+        with:
+          name: executable
+          path: ${{github.workspace}}

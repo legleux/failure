@@ -1,0 +1,10 @@
+name: Deploy
+description: 'composite run action'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Deploy
+      shell: bash
+      run: |
+        echo I am deploying

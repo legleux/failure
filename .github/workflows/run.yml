@@ -1,29 +1,30 @@
 name: CI
 on:
-  workflow_dispatch:
   push:
+    branches: main
+
+concurrency:
+  group: ci-pre-release-${{ github.ref }}-1
+  cancel-in-progress: true
+
 
 jobs:
-  build:
-    runs-on: ${{ matrix.runner || 'ubuntu-20.04' }}
-    name: ${{ matrix.name }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
+  ubuntu:
+    name: Ubuntu
+    uses: legleux/failure/.github/workflows/ubuntu.yml@main
 
-          - runner: ubuntu-20.04
-            name: Ubuntu 20.04
+  macos:
+    name: macOS
+    uses: legleux/failure/.github/workflows/macos.yml@main
 
-          - runner: macos-11
-            name: macOS 11
+  # test_ubuntu:
+  #   needs: build_ubuntu
+  #   uses: legleux/failure/.github/workflows/test_ubuntu.yml@main
 
-    steps:
-
-      - name: Build
-        run: |
-          if [[ $RANDOM -lt $(echo "2^14" | bc) ]] ; then (exit 0); else (exit 1); fi;
-
-      - name: Test
-        if: always() && ${{ matrix.runner }} == 'ubuntu'
-        run: echo "I are run"
+  # test_macos:
+  #   needs: build_macos
+  #   uses: legleux/failure/.github/workflows/test_macos.yml@main
+  deploy:
+    name: Deploy
+    needs: ['ubuntu', 'macos']
+    uses: legleux/failure/.github/workflows/deploy.yml@main

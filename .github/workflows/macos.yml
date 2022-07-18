@@ -1,0 +1,27 @@
+name: 🏗 Build
+
+on: workflow_call
+
+jobs:
+  build:
+    name: Build ${{ matrix.version}}
+    strategy:
+      matrix:
+        version: [11, 12]
+    runs-on: macos-${{ matrix.version}}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          os-version: ${{ matrix.version }}
+
+  test:
+    name: Test ${{ matrix.version}}
+    needs: build
+    strategy:
+      matrix:
+        version: [11, 12]
+    runs-on: macos-${{ matrix.version}}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          os-version: ${{ matrix.version }}

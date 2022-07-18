@@ -1,0 +1,10 @@
+name: Test
+description: 'composite run action'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Test
+      shell: bash
+      run: |
+        echo I am testing on ${{ matrix.version }}

@@ -14,8 +14,8 @@ jobs:
         with:
           os-version: ${{ matrix.version }}
       - name: print with stuff
-        # with:
-        #   os_version: matrix.version
+        with:
+          os_version: ${{ matrix.version }}
         run: echo "building with os_version ${{ os_version }}"
 
   test:

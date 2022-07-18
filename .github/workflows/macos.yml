@@ -16,7 +16,7 @@ jobs:
 
   test:
     name: Test ${{ matrix.version}}
-    # if: always()
+    if: always()
     needs: build
     strategy:
       matrix:
@@ -24,7 +24,7 @@ jobs:
     runs-on: macos-${{ matrix.version}}
     steps:
       - name: test if
-        if: ${{ matrix.version }} == 12
+        if: matrix.version == 12
         run: "echo we're on 12"
 
       - uses: actions/checkout@v3

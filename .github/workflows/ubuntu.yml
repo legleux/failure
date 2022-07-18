@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: just fail
         if: ${{ matrix.compiler }} == 'clang'
-        run: exit 1
+        run: echo ${{ matrix.compiler }}
 
       - uses: actions/checkout@v3
         name: ${{ github.workflow }}

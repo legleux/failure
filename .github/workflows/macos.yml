@@ -24,7 +24,7 @@ jobs:
     steps:
       - name: test if
         if: ${{ matrix.version }} == 12
-        run: echo we're on 12
+        run: "echo we're on 12"
 
       - uses: actions/checkout@v3
         with:

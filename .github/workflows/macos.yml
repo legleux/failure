@@ -1,4 +1,4 @@
-name: 🏗 Build
+name: 🏗 macOS
 
 on: workflow_call
 

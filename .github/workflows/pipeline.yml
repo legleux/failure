@@ -4,15 +4,21 @@ on:
     branches: main
 
 jobs:
-  ubuntu:
-    name: Ubuntu
-    uses: legleux/failure/.github/workflows/ubuntu.yml@main
+  build:
+    name: Build with all compilers
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cfg:
+        - { os: ubuntu-latest, name: GNU,         cc: gcc,      cxx: g++,        version: 9 }
+        - { os: ubuntu-latest, name: GNU,         cc: gcc,      cxx: g++,        version: 10 }
+        - { os: ubuntu-latest, name: Clang,       cc: clang,    cxx: clang++,    version: 13 }
+        - { os: ubuntu-latest, name: Clang,       cc: clang,    cxx: clang++,    version: 14 }
+        - { os: macos,         name: apple-clang, cc: clang,    cxx: clang,      version: 11 }
+        - { os: macos,         name: apple-clang, cc: clang,    cxx: clang,      version: 12 }
+        - { os: windows-2019,  name: VS2019,      cc: cl,       cxx: cl,         version: 16 }
+        - { os: windows-2022,  name: VS2022,      cc: cl,       cxx: cl,         version: 17 }
 
-  macos:
-    name: macOS
-    uses: legleux/failure/.github/workflows/macos.yml@main
-
-  deploy:
-    name: Deploy
-    needs: ['ubuntu', 'macos']
-    uses: legleux/failure/.github/workflows/deploy.yml@main
+    steps:
+      - run: |
+          echo "I'm building with ${{ matrix.cfg.os }}-${{ matrix.cfg.cc }}-${{ matrix.cfg.version }}"

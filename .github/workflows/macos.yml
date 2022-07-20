@@ -7,7 +7,8 @@ jobs:
     name: Build ${{ matrix.version}}
     strategy:
       matrix:
-        version: [11, 12]
+        # version: [11, 12]
+        version: 11
     runs-on: macos-${{ matrix.version}}
     outputs:
       pass: ${{ steps.step1.outputs.pass }}

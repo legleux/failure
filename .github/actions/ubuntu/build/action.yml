@@ -16,5 +16,5 @@ runs:
     - name: Save artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: build_materials
+        name: build_materials.txt
         path: build_materials.txt

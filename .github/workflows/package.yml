@@ -8,6 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        name: ${{ github.workflow }}
-
       - uses: legleux/failure/.github/actions/package@main

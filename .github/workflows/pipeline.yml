@@ -21,7 +21,7 @@ jobs:
     needs: [ubuntu, macos]
     uses: legleux/failure/.github/workflows/package.yml@main
 
-  sign_package:
+  sign_packages:
     name: Sign packages
     needs: [package]
     runs-on: ubuntu-20.04
@@ -31,5 +31,5 @@ jobs:
 
   deploy:
     name: Deploy
-    needs: ['ubuntu']
+    needs: ['sign_packages']
     uses: legleux/failure/.github/workflows/deploy.yml@main

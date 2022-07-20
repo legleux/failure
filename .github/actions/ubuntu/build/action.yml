@@ -12,3 +12,9 @@ runs:
         echo I am building ${{ matrix.type}} with ${{ matrix.compiler}} on ${{ matrix.version }} > executable
         ls -lh
         .github/actions/ubuntu/build/build.sh
+
+    - name: Save artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: build_materials
+        path: build_materials.txt

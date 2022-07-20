@@ -19,7 +19,7 @@ jobs:
   package:
     name: Build packages
     needs: [ubuntu, macos]
-    uses: legleux/failure/.github/workflows/ubuntu/package.yml@main
+    uses: legleux/failure/.github/workflows/package.yml@main
 
   sign_package:
     name: Sign packages

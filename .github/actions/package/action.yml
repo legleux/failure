@@ -16,6 +16,6 @@ runs:
         mv build_materials.txt PACKAGE
 
     - name: Save assets
-      uses: actions/download-artifact@v3
+      uses: actions/upload-artifact@v3
       with:
         name: PACKAGE

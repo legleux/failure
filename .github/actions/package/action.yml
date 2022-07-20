@@ -1,3 +1,6 @@
+name: Package
+description: 'composite run action'
+
 runs:
   using: "composite"
   steps:

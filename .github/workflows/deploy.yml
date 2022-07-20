@@ -4,6 +4,8 @@ on: workflow_call
 
 jobs:
   deploy:
+    environment:
+      name: pushToArtifactory
     name: Deploy packages to Artifactory
     runs-on: ubuntu-latest
     steps:

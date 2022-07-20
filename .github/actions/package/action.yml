@@ -1,0 +1,17 @@
+runs:
+  using: "composite"
+  steps:
+    - name: Download assets
+      uses: actions/download-artifact@v3
+      with:
+        name: build_materials.txt
+
+    - name: Build package
+      shell: bash
+      run: |
+        echo I am creating packages
+
+    - name: Save assets
+      uses: actions/download-artifact@v3
+      with:
+        name: build_materials.txt

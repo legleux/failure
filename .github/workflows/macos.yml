@@ -66,6 +66,6 @@ jobs:
         job: [build, test]
     steps:
       - name: Adding markdown
-        run: echo ${{ job.status}} >> $GITHUB_STEP_SUMMARY
+        run: echo ${{ job.status}} butts >> $GITHUB_STEP_SUMMARY
       - name: build status
         run: echo ${{needs.build.outputs.build_output}} >> $GITHUB_STEP_SUMMARY

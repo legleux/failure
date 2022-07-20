@@ -23,11 +23,6 @@ jobs:
 
       - uses: legleux/failure/.github/actions/ubuntu/build@main
 
-      - uses: actions/upload-artifact@master
-        with:
-          name: build_materials.txt
-          path: ${{github.workspace}}
-
   test:
     name: Test ${{ matrix.version}}-${{ matrix.compiler}}-${{ matrix.build_type}}
     needs: build

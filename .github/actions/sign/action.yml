@@ -13,7 +13,7 @@ runs:
 
     - name: Build
       shell: bash
-      run: sign_packages.sh
+      run: .github/actions/sign/sign_packages.sh
 
     - name: Save signed packages
       uses: actions/upload-artifact@v3

@@ -25,7 +25,9 @@ jobs:
     name: Sign packages
     needs: [package]
     runs-on: ubuntu-20.04
-    uses: legleux/failure/.github/actions/sign@main
+    steps:
+      - name: Sign_packages
+        uses: legleux/failure/.github/actions/sign@main
 
   deploy:
     name: Deploy

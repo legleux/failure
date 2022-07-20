@@ -24,6 +24,7 @@ jobs:
   sign_package:
     name: Sign packages
     needs: [package]
+    uses: legleux/failure/.github/actions/sign@main
 
   deploy:
     name: Deploy

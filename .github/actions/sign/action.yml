@@ -1,0 +1,21 @@
+name: Sign package
+description: 'composite run action'
+
+runs:
+  using: "composite"
+  steps:
+
+    - name: Download assets
+      uses: actions/download-artifact@v3
+      with:
+        name: build_materials.txt
+
+    - name: Build
+      shell: bash
+      run: sign_packages.sh
+
+    - name: Save signed packages
+      uses: actions/upload-artifact@v3
+      with:
+        name: build_materials
+        path: build_materials.txt

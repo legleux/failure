@@ -8,11 +8,23 @@ jobs:
     name: Ubuntu
     uses: legleux/failure/.github/workflows/ubuntu.yml@main
 
+  # rocky:
+  #   name: Rocky
+  #   uses: legleux/failure/.github/workflows/rocky.yml@main
+
   macos:
     name: macOS
     uses: legleux/failure/.github/workflows/macos.yml@main
 
+  package:
+    name: Build packages
+    needs: [ubuntu, macos]
+
+  sign_package:
+    name: Sign packages
+    needs: [package]
+
   deploy:
     name: Deploy
-    needs: ['ubuntu', 'macos']
+    needs: ['ubuntu']
     uses: legleux/failure/.github/workflows/deploy.yml@main

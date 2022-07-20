@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-echo "Michael Legleux" >> build_materials.txt
+echo "Michael Legleux" >> PACKAGE
+mv PACKAGE PACKAGE.signed

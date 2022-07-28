@@ -17,5 +17,5 @@ runs:
         unset GPG_KEY_PASS_B64
         export GPG_KEYID=$(gpg --with-colon --list-secret-keys | head -n1 | cut -d : -f 5)
         for PKG in $(ls *.deb); do
-          ./sign.sh $PKG
+          .github/actions/sign/sign.sh $PKG
         done

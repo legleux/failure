@@ -5,8 +5,8 @@ jobs:
   sign:
     name: Sign packages
     runs-on: ubuntu-20.04
-  env:
-    KEY: ${{ secrets.SUPER_SECRET }}
+    env:
+      KEY: ${{ secrets.SUPER_SECRET }}
     steps:
       - name: Get source
         uses: actions/checkout@v3

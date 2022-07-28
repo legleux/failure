@@ -7,8 +7,8 @@ jobs:
   ubuntu:
     name: Ubuntu
     uses: legleux/failure/.github/workflows/ubuntu.yml@main
-    secrets:
-      SUPER_SECRET: ${{ secrets.SECRET_A }}
+    # secrets:
+    #   SUPER_SECRET: ${{ secrets.SECRET_A }}
 
   # rocky:
   #   name: Rocky

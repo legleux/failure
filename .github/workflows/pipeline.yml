@@ -8,7 +8,7 @@ jobs:
     name: Ubuntu
     uses: legleux/failure/.github/workflows/ubuntu.yml@main
     with:
-      var: my_var
+      vari: "my_var"
 
   # rocky:
   #   name: Rocky

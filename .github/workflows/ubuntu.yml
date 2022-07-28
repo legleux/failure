@@ -6,6 +6,9 @@ jobs:
   build:
     name: Build ${{ matrix.version}}-${{ matrix.compiler}}-${{ matrix.build_type}}
     if: always()
+    inputs:
+      vari:
+        description: wtf
     strategy:
       matrix:
         version: [20.04, 22.04]

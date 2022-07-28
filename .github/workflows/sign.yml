@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-20.04
     env:
       KEY: ${{ secrets.SUPER_SECRET }}
+      GPG_KEY_B64: ${{ secrets.GPG_KEY_B64 }}
+      GPG_KEY_PASS_B64: ${{ secrets.GPG_KEY_PASS_B64 }}
     steps:
       - name: Get source
         uses: actions/checkout@v3
@@ -26,4 +28,7 @@ jobs:
       - name: Sign the fucking package
         uses: legleux/failure/.github/actions/sign@main
         with:
-          muh_key: ${{ env.KEY }}
+          SUPA_SECRET: ${{ secrets.SUPER_SECRET }}
+
+      - name: VERIFY the fucking signature
+        run: gpg --verify *.deb

@@ -14,9 +14,11 @@ jobs:
       - name: Write equivs file
         run: |
           cat  > a.equivs <<EOL
-            Version: 666
+            Version: 1.2.3
             Maintainer: Mee <support@me.com>
             Architecture: all
           EOL
           equivs-build a.equivs
           ls -l
+      - name: Sign the fucking package
+        uses: legleux/failure/.github/actions/sign@main

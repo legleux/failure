@@ -19,8 +19,6 @@ jobs:
         # build_type: ['release', 'debug']
 
     runs-on: ubuntu-${{ matrix.version}}
-    secrets:
-      SUPER_SECRET: ${{ secrets.SECRET_A }}
     steps:
       - name: just fail
         if: ${{ matrix.compiler }} == clang

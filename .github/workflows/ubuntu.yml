@@ -29,7 +29,10 @@ jobs:
         # name: ${{ github.workflow }}
       - name: Use  FRIGGIN secret
         run: |
-          echo ${{ secrets.SUPER_SECRET }} >> file.txt
+          echo "The secret: ${{ secrets.SUPER_SECRET }}" >> file.txt
+          if [ ${{ secrets.SUPER_SECRET }} = "cool" ]; do
+            echo "we're good"
+          fi
           cat file.txt
 
       - uses: legleux/failure/.github/actions/secret@main

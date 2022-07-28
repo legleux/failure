@@ -6,9 +6,9 @@ on:
       SUPER_SECRET:
         description: 'A token passed from the caller workflow'
         required: true
-      vari:
-        description: 'A token passed from the caller workflow'
-        required: true
+      # vari:
+      #   description: 'A token passed from the caller workflow'
+      #   required: true
 jobs:
   build:
     name: Build ${{ matrix.version}}-${{ matrix.compiler}}-${{ matrix.build_type}}

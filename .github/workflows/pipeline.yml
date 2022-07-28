@@ -8,14 +8,8 @@ jobs:
     name: Ubuntu
     uses: legleux/failure/.github/workflows/ubuntu.yml@main
     with:
-      var: ${{ secrets.SUPER_SECRET }}
-      super_secret: "${{ secrets.SUPER_SECRET }}"
+      var: my_var
 
-    env:
-      GPG_KEY_B64: ${{ secrets.SUPER_SECRET }}
-      GPG_KEY_PASS_B64: ${{ secrets.SUPER_SECRET }}
-      SUCK: ${{ secrets.SUPER_SECRET }}
-      super_env_secret: ${{ secrets.SECRET_ENV }}
   # rocky:
   #   name: Rocky
   #   uses: legleux/failure/.github/workflows/rocky.yml@main

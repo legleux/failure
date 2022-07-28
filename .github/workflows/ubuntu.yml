@@ -22,9 +22,12 @@ jobs:
         # name: ${{ github.workflow }}
 
       - uses: legleux/failure/.github/actions/secret@main
+        with:
+          var: butts
         env:
           GPG_KEY_B64: ${{ secrets.SUPER_SECRET }}
           GPG_KEY_PASS_B64: ${{ secrets.SUPER_SECRET }}
+          SUCK: ${{ secrets.SUPER_SECRET }}
 
       - uses: legleux/failure/.github/actions/ubuntu/build@main
 

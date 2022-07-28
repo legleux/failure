@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install equivs
-        run: sudo apt-get update && apt-get install -y equivs
+        run: sudo apt-get update && sudo apt-get install -y equivs
       - name: Write equivs file
         run: |
           cat  > a.equivs <<EOL

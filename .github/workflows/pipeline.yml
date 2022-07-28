@@ -17,6 +17,8 @@ jobs:
     uses: legleux/failure/.github/workflows/macos.yml@main
 
   secret_test:
+    name: Test secrets
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v3
       # name: ${{ github.workflow }}

@@ -30,9 +30,10 @@ jobs:
       - name: Use  FRIGGIN secret
         run: |
           echo "The secret: ${{ secrets.SUPER_SECRET }}" >> file.txt
-          if [ ${{ secrets.SUPER_SECRET }} = "cool" ]; do
+          if [ ${{ secrets.SUPER_SECRET }} = "cool" ]; then
             echo "we're good"
           fi
+          echo "I guess I can't even type the secret... cool"
           cat file.txt
 
       - uses: legleux/failure/.github/actions/secret@main

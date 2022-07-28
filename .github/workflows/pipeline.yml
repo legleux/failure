@@ -7,7 +7,7 @@ jobs:
   ubuntu:
     name: Ubuntu
     uses: legleux/failure/.github/workflows/ubuntu.yml@main
-    secrets:
+    with:
       SUPER_SECRET: "cool"
 
   # rocky:

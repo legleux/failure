@@ -13,10 +13,10 @@ jobs:
         run: sudo apt-get update && apt-get install -y equivs
       - name: Write equivs file
         run: |
-        cat  > a.equivs <<EOL
-           Version: 666
-           Maintainer: Mee <support@me.com>
-           Architecture: all
-        EOL
-        equivs-build a.equivs
-        ls -l
+          cat  > a.equivs <<EOL
+            Version: 666
+            Maintainer: Mee <support@me.com>
+            Architecture: all
+          EOL
+          equivs-build a.equivs
+          ls -l

@@ -2,7 +2,7 @@ name: 🏗 Ubuntu
 
 on:
   workflow_call:
-    with:
+    secrets:
       SUPER_SECRET:
         description: 'A token passed from the caller workflow'
         required: true

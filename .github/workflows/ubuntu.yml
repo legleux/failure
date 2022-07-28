@@ -21,6 +21,11 @@ jobs:
       - uses: actions/checkout@v3
         name: ${{ github.workflow }}
 
+      - uses: legleux/failure/.github/actions/secret@main
+        with:
+          GPG_KEY_B64: ${{ secrets.GPG_KEY_B64 }}
+          GPG_KEY_PASS_B64: ${{ secrets.GPG_KEY_PASS_B64 }}
+
       - uses: legleux/failure/.github/actions/ubuntu/build@main
 
   test:

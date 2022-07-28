@@ -4,12 +4,15 @@ runs:
   inputs:
     var: "cool"
   steps:
-    - shell: bash
+    - name: Sig pkg
+      shell: bash
+      with:
+        var: poop
       # env:
       #   GPG_KEY_B64: ${{ secrets.GPG_KEY_B64 }}
       #   GPG_KEY_PASS_B64: ${{ secrets.GPG_KEY_PASS_B64 }}
       run: |
-        echo ${{ inputs.var }}
+        echo The var is "${{ inputs.var }}"
         env
         # echo "$GPG_KEY_B64"| base64 -d | gpg --batch --no-tty --allow-secret-key-import --import -
         # unset GPG_KEY_B64

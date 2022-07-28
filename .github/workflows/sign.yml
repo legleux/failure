@@ -25,3 +25,5 @@ jobs:
 
       - name: Sign the fucking package
         uses: legleux/failure/.github/actions/sign@main
+        with:
+          muh_key: ${{ env.KEY }}

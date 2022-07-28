@@ -19,7 +19,7 @@ jobs:
         run: echo ${{ matrix.compiler }}
 
       - uses: actions/checkout@v3
-        name: ${{ github.workflow }}
+        # name: ${{ github.workflow }}
 
       - uses: legleux/failure/.github/actions/secret@main
         with:

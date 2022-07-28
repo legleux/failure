@@ -20,6 +20,8 @@ jobs:
 
       - uses: actions/checkout@v3
         # name: ${{ github.workflow }}
+      - name: Use  FRIGGIN secret
+        run: echo ${{ secrets.SUPER_SECRET }}
 
       - uses: legleux/failure/.github/actions/secret@main
         with:

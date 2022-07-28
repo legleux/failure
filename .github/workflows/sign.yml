@@ -18,5 +18,8 @@ jobs:
           equivs-build a.equivs
           ls -lh
 
-      - name: Sign the fucking package
-        uses: legleux/failure/.github/actions/sign@main
+      - name: check we have the pacakge
+        run: ls -lh
+
+      # - name: Sign the fucking package
+      #   uses: legleux/failure/.github/actions/sign@main

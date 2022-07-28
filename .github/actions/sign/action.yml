@@ -1,16 +1,9 @@
 
 runs:
   using: composite
-  inputs:
-    var: "cool"
   steps:
     - name: Sig pkg
       shell: bash
-      with:
-        var: poop
-      # env:
-      #   GPG_KEY_B64: ${{ secrets.GPG_KEY_B64 }}
-      #   GPG_KEY_PASS_B64: ${{ secrets.GPG_KEY_PASS_B64 }}
       run: |
         echo The var is "${{ inputs.var }}"
         env

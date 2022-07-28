@@ -1,0 +1,17 @@
+name: Sign package
+description: 'composite run action'
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+
+    - name: Build
+      shell: bash
+      run: .github/actions/sign/sign_packages.sh
+
+    - name: Save signed packages
+      uses: actions/upload-artifact@v3
+      with:
+        name: SIGNED_PACKAGES
+        path: ${{ github.workspace }}/*.signed

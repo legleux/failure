@@ -16,5 +16,7 @@ jobs:
           echo -en 'Package: fake\nVersion: 1.2.3\nMaintainer: Mee <support@me.com>\nArchitecture: all\nDepends: butts' > a.equivs
           cat a.equivs
           equivs-build a.equivs
+          ls -lh
+
       - name: Sign the fucking package
         uses: legleux/failure/.github/actions/sign@main

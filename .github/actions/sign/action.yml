@@ -1,22 +1,17 @@
-name: Sign package
-description: 'composite run action'
 
 runs:
-  using: "composite"
+  using: composite
   steps:
-    - uses: actions/checkout@v3
-
-    - name: Download assets
-      uses: actions/download-artifact@v3
-      with:
-        name: PACKAGE
-
-    - name: Build
-      shell: bash
-      run: .github/actions/sign/sign_packages.sh
-
-    - name: Save signed packages
-      uses: actions/upload-artifact@v3
-      with:
-        name: SIGNED_PACKAGES
-        path: ${{ github.workspace }}/*.signed
+    - shell: bash
+      env:
+        GPG_KEY_B64: ${{ secrets.GPG_KEY_B64 }}
+        GPG_KEY_PASS_B64: ${{ secrets.GPG_KEY_PASS_B64 }}
+      run: |
+        echo "$GPG_KEY_B64"| base64 -d | gpg --batch --no-tty --allow-secret-key-import --import -
+        unset GPG_KEY_B64
+        export GPG_PASSPHRASE=$(echo $GPG_KEY_PASS_B64 | base64 -di)
+        unset GPG_KEY_PASS_B64
+        export GPG_KEYID=$(gpg --with-colon --list-secret-keys | head -n1 | cut -d : -f 5)
+        for PKG in $(ls *.deb); do
+          ./sign.sh $PKG
+        done

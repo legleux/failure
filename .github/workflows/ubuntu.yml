@@ -24,7 +24,7 @@ jobs:
       - uses: legleux/failure/.github/actions/secret@main
         with:
           var: ${{ secrets.SUPER_SECRET }}
-          super_secret: ${{ secrets.SECRET_A }}
+          super_secret: "some fucking secret"
 
         env:
           GPG_KEY_B64: ${{ secrets.SUPER_SECRET }}

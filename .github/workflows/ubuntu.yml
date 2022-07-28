@@ -2,12 +2,13 @@ name: 🏗 Ubuntu
 
 on:
   workflow_call:
-    SUPER_SECRET:
-      description: 'A token passed from the caller workflow'
-      required: true
-    vari:
-      description: 'A token passed from the caller workflow'
-      required: true
+    secrets:
+      SUPER_SECRET:
+        description: 'A token passed from the caller workflow'
+        required: true
+      vari:
+        description: 'A token passed from the caller workflow'
+        required: true
 jobs:
   build:
     name: Build ${{ matrix.version}}-${{ matrix.compiler}}-${{ matrix.build_type}}

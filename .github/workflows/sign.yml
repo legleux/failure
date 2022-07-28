@@ -21,5 +21,5 @@ jobs:
       - name: check we have the pacakge
         run: ls -lh
 
-      # - name: Sign the fucking package
-      #   uses: legleux/failure/.github/actions/sign@main
+      - name: Sign the fucking package
+        uses: legleux/failure/.github/actions/sign@main

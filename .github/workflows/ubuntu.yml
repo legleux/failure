@@ -19,20 +19,20 @@ jobs:
         run: echo ${{ matrix.compiler }}
 
       - uses: actions/checkout@v3
-      #   # name: ${{ github.workflow }}
-      # - name: Use  FRIGGIN secret
-      #   run: echo ${{ secrets.SUPER_SECRET }}
+        # name: ${{ github.workflow }}
+      - name: Use  FRIGGIN secret
+        run: echo ${{ secrets.SUPER_SECRET }}
 
-      # - uses: legleux/failure/.github/actions/secret@main
-      #   with:
-      #     var: ${{ secrets.SUPER_SECRET }}
-      #     super_secret: "${{ secrets.SUPER_SECRET }}"
+      - uses: legleux/failure/.github/actions/secret@main
+        with:
+          var: ${{ secrets.SUPER_SECRET }}
+          super_secret: "${{ secrets.SUPER_SECRET }}"
 
-      #   env:
-      #     GPG_KEY_B64: ${{ secrets.SUPER_SECRET }}
-      #     GPG_KEY_PASS_B64: ${{ secrets.SUPER_SECRET }}
-      #     SUCK: ${{ secrets.SUPER_SECRET }}
-      #     super_env_secret: ${{ secrets.SECRET_ENV }}
+        env:
+          GPG_KEY_B64: ${{ secrets.SUPER_SECRET }}
+          GPG_KEY_PASS_B64: ${{ secrets.SUPER_SECRET }}
+          SUCK: ${{ secrets.SUPER_SECRET }}
+          super_env_secret: ${{ secrets.SECRET_ENV }}
 
       - uses: legleux/failure/.github/actions/ubuntu/build@main
 

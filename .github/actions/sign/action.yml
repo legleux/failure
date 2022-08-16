@@ -7,7 +7,9 @@ inputs:
   GPG_KEY_PASS_B64:
     description: pass
     required: true
-
+  SUPA_SECRET:
+    description: pass
+    required: true
 runs:
   using: composite
   steps:

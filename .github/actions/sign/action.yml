@@ -16,10 +16,6 @@ runs:
     - name: Sig pkg
       shell: bash
       run: |
-        if [ ${KEY} = "butts" ]; then
-          echo "We're in luck!"
-        fi
-
         echo "${{ inputs.GPG_KEY_B64 }}"| base64 -d | gpg --batch --no-tty --allow-secret-key-import --import -
         export GPG_PASSPHRASE=$(echo ${{inputs.GPG_KEY_PASS_B64}} | base64 -di)
         export GPG_KEYID=$(gpg --with-colon --list-secret-keys | head -n1 | cut -d : -f 5)

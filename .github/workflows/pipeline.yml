@@ -47,6 +47,10 @@ jobs:
     name: Sign packages
     needs: [package]
     runs-on: ubuntu-20.04
+    with:
+      SUPA_SECRET: ${{ secrets.SUPER_SECRET }}
+      GPG_KEY_B64: ${{ secrets.GPG_KEY_B64 }}
+      GPG_KEY_PASS_B64: ${{ secrets.GPG_KEY_PASS_B64 }}
     steps:
       - name: Sign packages
         uses: legleux/failure/.github/actions/sign@main

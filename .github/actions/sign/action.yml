@@ -19,12 +19,9 @@ runs:
         if [ ${KEY} = "butts" ]; then
           echo "We're in luck!"
         fi
-        ls -lh
-        env
+
         echo "${{ inputs.GPG_KEY_B64 }}"| base64 -d | gpg --batch --no-tty --allow-secret-key-import --import -
-        unset {{ inputs.GPG_KEY_B64 }}
         export GPG_PASSPHRASE=$(echo ${{inputs.GPG_KEY_PASS_B64}} | base64 -di)
-        unset {{inputs.GPG_KEY_PASS_B64}}
         export GPG_KEYID=$(gpg --with-colon --list-secret-keys | head -n1 | cut -d : -f 5)
         for PKG in $(ls *.deb); do
           .github/actions/sign/sign.sh $PKG

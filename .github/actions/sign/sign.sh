@@ -13,5 +13,5 @@ sign_dpkg() {
             $1
     fi
 }
-
+echo "Input was $1"
 sign_dpkg $1

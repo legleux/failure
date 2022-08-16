@@ -14,33 +14,34 @@ jobs:
   #   name: Rocky
   #   uses: legleux/failure/.github/workflows/rocky.yml@main
 
-  macos:
-    name: macOS
-    uses: legleux/failure/.github/workflows/macos.yml@main
+  # macos:
+  #   name: macOS
+  #   uses: legleux/failure/.github/workflows/macos.yml@main
 
-  secret_test:
-    name: Test secrets
-    runs-on: ubuntu-20.04
-    steps:
-    - uses: actions/checkout@v3
-      # name: ${{ github.workflow }}
-    - name: Use  FRIGGIN secret
-      run: echo ${{ secrets.SUPER_SECRET }}
+  # secret_test:
+  #   name: Test secrets
+  #   runs-on: ubuntu-20.04
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #     # name: ${{ github.workflow }}
+  #   - name: Use  FRIGGIN secret
+  #     run: echo ${{ secrets.SUPER_SECRET }}
 
-    - uses: legleux/failure/.github/actions/secret@main
-      with:
-        var: ${{ secrets.SUPER_SECRET }}
-        super_secret: "${{ secrets.SUPER_SECRET }}"
+  #   - uses: legleux/failure/.github/actions/secret@main
+  #     with:
+  #       var: ${{ secrets.SUPER_SECRET }}
+  #       super_secret: "${{ secrets.SUPER_SECRET }}"
 
-      env:
-        GPG_KEY_B64: ${{ secrets.SUPER_SECRET }}
-        GPG_KEY_PASS_B64: ${{ secrets.SUPER_SECRET }}
-        SUCK: ${{ secrets.SUPER_SECRET }}
-        super_env_secret: ${{ secrets.SECRET_ENV }}
+  #     env:
+  #       GPG_KEY_B64: ${{ secrets.SUPER_SECRET }}
+  #       GPG_KEY_PASS_B64: ${{ secrets.SUPER_SECRET }}
+  #       SUCK: ${{ secrets.SUPER_SECRET }}
+  #       super_env_secret: ${{ secrets.SECRET_ENV }}
 
   package:
     name: Build packages
-    needs: [ubuntu, macos]
+    # needs: [ubuntu, macos]
+    needs: ubuntu
     uses: legleux/failure/.github/workflows/package.yml@main
 
   sign_packages:

@@ -29,6 +29,8 @@ jobs:
         uses: legleux/failure/.github/actions/sign@main
         with:
           SUPA_SECRET: ${{ secrets.SUPER_SECRET }}
+          GPG_KEY_B64: ${{ secrets.GPG_KEY_B64 }}
+          GPG_KEY_PASS_B64: ${{ secrets.GPG_KEY_PASS_B64 }}
 
       - name: VERIFY the fucking signature
         run: gpg --verify *.deb

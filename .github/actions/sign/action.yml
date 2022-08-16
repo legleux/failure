@@ -1,4 +1,12 @@
 # this needs access to ${{secrets.SECRET_A}}
+name: Sign packages
+inputs:
+  GPG_KEY_B64:
+    description: key
+    required: true
+  GPG_KEY_PASS_B64:
+    description: pass
+    required: true
 
 runs:
   using: composite
@@ -11,10 +19,10 @@ runs:
         fi
         ls -lh
         env
-        echo "$GPG_KEY_B64"| base64 -d | gpg --batch --no-tty --allow-secret-key-import --import -
-        unset GPG_KEY_B64
-        export GPG_PASSPHRASE=$(echo $GPG_KEY_PASS_B64 | base64 -di)
-        unset GPG_KEY_PASS_B64
+        echo "${{ inputs.GPG_KEY_B64 }}"| base64 -d | gpg --batch --no-tty --allow-secret-key-import --import -
+        unset {{ inputs.GPG_KEY_B64 }}
+        export GPG_PASSPHRASE=$(echo ${{inputs.GPG_KEY_PASS_B64}} | base64 -di)
+        unset {{inputs.GPG_KEY_PASS_B64}}
         export GPG_KEYID=$(gpg --with-colon --list-secret-keys | head -n1 | cut -d : -f 5)
         for PKG in $(ls *.deb); do
           .github/actions/sign/sign.sh $PKG
